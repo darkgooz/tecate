@@ -37,9 +37,9 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/mir4nftsearch
-    username: mir4nftsearch
-    password:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: user
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -120,4 +120,6 @@ jhipster:
 # https://www.jhipster.tech/common-application-properties/
 # ===================================================================
 
-# application:
+application:
+  nft:
+    url: https://webapi.mir4global.com/

@@ -10,4 +10,33 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @ConfigurationProperties(prefix = "application", ignoreUnknownFields = false)
 public class ApplicationProperties {
+
+    private final GenericConfig nft = new GenericConfig();
+
+
+    public static class GenericConfig {
+
+        private String url = "https://webapi.mir4global.com";
+        private String accessToken = "";
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public String getAccessToken() {
+            return accessToken;
+        }
+
+        public void setAccessToken(String accessToken) {
+            this.accessToken = accessToken;
+        }
+    }
+
+    public GenericConfig getNft() {
+        return nft;
+    }
 }
