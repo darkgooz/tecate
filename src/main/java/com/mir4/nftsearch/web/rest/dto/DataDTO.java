@@ -3,10 +3,11 @@ package com.mir4.nftsearch.web.rest.dto;
 import java.util.List;
 
 public class DataDTO {
-    public int firstID;
-    public int totalCount;
-    public int more;
-    public List<NFTElementDTO> lists;
+    private int firstID;
+    private int totalCount;
+    private int more;
+    private List<NFTElementDTO> lists;
+    private List<SpiritDTO> inven;
 
     public DataDTO() {
     }
@@ -41,5 +42,13 @@ public class DataDTO {
 
     public void setLists(List<NFTElementDTO> lists) {
         this.lists = lists;
+    }
+
+    public List<SpiritDTO> getInven() {
+        return inven;
+    }
+
+    public void setInven(List<SpiritDTO> inven) {
+        this.inven = inven;
     }
 }

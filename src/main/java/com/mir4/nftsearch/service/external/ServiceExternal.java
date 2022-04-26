@@ -29,12 +29,22 @@ public class ServiceExternal {
         }
     }
 
-    public RootDataDTO getNftList() {
+    public RootDataDTO getNftList(int page) {
         try {
             return (RootDataDTO) getSyncRest("/nft/lists?listType=sale&class=0&levMin=0&levMax=0&powerMin=0&powerMax=0&priceMin=0&priceMax=0&sort" +
-                "=latest&page=1&languageCode=en", RootDataDTO.class);
+                "=latest&page=" + page + "&languageCode=en", RootDataDTO.class);
         } catch (Exception e) {
             return null;
         }
     }
+
+    public RootDataDTO getSpiritList(int transportID) {
+        try {
+            return (RootDataDTO) getSyncRest("/nft/character/spirit?transportID=" + transportID + "&languageCode=en", RootDataDTO.class);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+
 }
