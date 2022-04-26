@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.mir4.nftsearch"
+    },
+    "jhipsterVersion": "6.9.1",
+    "applicationType": "microservice",
+    "baseName": "mir4nftsearch",
+    "packageName": "com.mir4.nftsearch",
+    "packageFolder": "com/mir4/nftsearch",
+    "serverPort": "8081",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "MGM5YWY0ZmZjZWE4NGE0MGM5NDk3M2UwMTczYTEyNDUwY2EwMDY3YTE5YTZkYzRkYjAxY2Y4Y2NiYjI4Y2QzZDNlOTg1Mjk0OGJhY2FmNGU0NmNlYjQ3NDA5YmIyMTFjYmEwNTg3YWFlMmI2YjJhZWIzZTkyOTZmMjlhZTc5MmQ=",
+    "embeddableLaunchScript": false,
+    "creationTimestamp": 1650931603827,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "clientPackageManager": "npm",
+    "blueprints": [],
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}

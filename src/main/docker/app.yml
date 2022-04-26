@@ -1,0 +1,14 @@
+version: '2'
+services:
+  mir4nftsearch-app:
+    image: mir4nftsearch
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,swagger
+      - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://mir4nftsearch-postgresql:5432/mir4nftsearch
+      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+  mir4nftsearch-postgresql:
+    extends:
+      file: postgresql.yml
+      service: mir4nftsearch-postgresql
