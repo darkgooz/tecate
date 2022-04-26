@@ -1,6 +1,7 @@
 package com.mir4.nftsearch.web.rest;
 
 import com.mir4.nftsearch.service.NFTService;
+import com.mir4.nftsearch.web.rest.dto.NFTFilters;
 import com.mir4.nftsearch.web.rest.dto.RootDataDTO;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +20,8 @@ public class NFTResource {
         this.NFTService = NFTService;
     }
     @PostMapping("/nfts")
-    public ResponseEntity<List<String>> getAllRegions(@RequestBody List<String> pets) {
-        List<String> response = NFTService.getNftList(pets);
+    public ResponseEntity<List<String>> getNFT(@RequestBody NFTFilters request) {
+        List<String> response = NFTService.getNftList(request);
         return ResponseEntity.ok().body(response);
     }
 

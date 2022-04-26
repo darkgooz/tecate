@@ -3,6 +3,7 @@ package com.mir4.nftsearch.service.external;
 import com.google.gson.Gson;
 import com.mir4.nftsearch.config.ApplicationProperties;
 import com.mir4.nftsearch.web.rest.dto.RootDataDTO;
+import com.mir4.nftsearch.web.rest.dto.RootDataItemsDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -41,6 +42,14 @@ public class ServiceExternal {
     public RootDataDTO getSpiritList(int transportID) {
         try {
             return (RootDataDTO) getSyncRest("/nft/character/spirit?transportID=" + transportID + "&languageCode=en", RootDataDTO.class);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public RootDataItemsDTO getItemList(int transportID) {
+        try {
+            return (RootDataItemsDTO) getSyncRest("/nft/character/inven?transportID=" + transportID + "&languageCode=en", RootDataItemsDTO.class);
         } catch (Exception e) {
             return null;
         }
