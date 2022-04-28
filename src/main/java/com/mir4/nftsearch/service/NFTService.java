@@ -23,14 +23,14 @@ public class NFTService {
 
     public List<String> getNftList(NFTFilters request) {
         List<String> results = new ArrayList<>();
-        int containsAll = 0;
-        int sizeTreasure = 0;
         for (int i = 1; i <= request.getPages(); i++) {
             RootDataDTO rootDataDTO = serviceExternal.getNftList(i);
             if (rootDataDTO.getCode() == 200) {
                 DataDTO data = rootDataDTO.getData();
                 if (data.getLists() != null)
                     for (NFTElementDTO element : data.getLists()) {
+                        int containsAll = 0;
+                        int sizeTreasure = 0;
                         RootDataDTO spirit = serviceExternal.getSpiritList(element.getTransportID());
                         if (spirit.getCode() == 200) {
                             if (spirit.getData() != null) {
@@ -45,13 +45,14 @@ public class NFTService {
                                 }
                             }
                         }
+                        if(request.getTreasures() != null && !request.getTreasures().isEmpty()){
                         RootDataItemsDTO treasures = serviceExternal.getItemList(element.getTransportID());
                         if (treasures.getCode() == 200){
                             if (treasures.getData() != null){
                                 for (TreasureDetails treasure : request.getTreasures()){
                                     Long count = treasures.getData().stream().filter(value -> {
                                         boolean b =
-                                            value.getGrade().equalsIgnoreCase(treasure.getGrade()) && value.getItemName().equalsIgnoreCase(treasure.getName());
+                                            value.getItemID().equalsIgnoreCase(treasure.getName());
                                         return b;
                                     }).count();
                                     if (count.intValue() >= treasure.getAmount())
@@ -59,8 +60,23 @@ public class NFTService {
                                 }
                             }
                         }
-                        if (containsAll == request.getPets().size() && sizeTreasure == request.getTreasures().size()) {
-                            results.add("https://www.xdraco.com/nft/trade/" + element.getSeq());
+                        }
+
+                        if(request.getPets() != null && request.getTreasures() != null)  {
+                            if (containsAll == request.getPets().size() && sizeTreasure == request.getTreasures().size()) {
+                                results.add("https://www.xdraco.com/nft/trade/" + element.getSeq());
+                            }
+                        } else {
+                            if(request.getTreasures() != null) {
+                                if(sizeTreasure == request.getTreasures().size()){
+                                    results.add("https://www.xdraco.com/nft/trade/" + element.getSeq());
+                                }
+                            }
+                            if(request.getPets() != null){
+                                if (containsAll == request.getPets().size()) {
+                                    results.add("https://www.xdraco.com/nft/trade/" + element.getSeq());
+                                }
+                            }
                         }
                     }
             }
